@@ -3,26 +3,26 @@ CMSSW_Daq_SingleMachineTest
 
 DAQ2 F3 Single Machine Test configurations
 
-1.  Get a terminal on a machine with enough HDD
-        ssh lxplus.cern.ch
-        df /tmp
-        ## Logout and login to a different node if Use > 80 %.
-        bash
+## Get a terminal on a machine with enough HDD
+ssh lxplus.cern.ch
+df /tmp
+## Logout and login to a different node if Use > 80 %.
+bash
 
 
-2.  Setup CMSSW
-        ## Customizable location of the code for the test
-        TEST_DIR=$(mktemp -d -p /tmp/$(whoami))
-        cd $TEST_DIR
-        export SCRAM_ARCH=slc6_amd64_gcc481
-        cmsrel CMSSW_7_0_0_pre7
-        cd CMSSW_7_0_0_pre7/src
-        cmsenv
+## Setup CMSSW
+## Customizable location of the code for the test
+TEST_DIR=$(mktemp -d -p /tmp/$(whoami))
+cd $TEST_DIR
+export SCRAM_ARCH=slc6_amd64_gcc481
+cmsrel CMSSW_7_0_0_pre7
+cd CMSSW_7_0_0_pre7/src
+cmsenv
 
-3.   Get the configs
-        SOURCE=https://github.com/janveverka/CMSSW_Daq_SingleMachineTest.git
-        DESTINATION=$CMSSW_BASE/src/Daq/SingleMachineTest
-        git clone $SOURCE $DESTINATION
+## Get the configs
+SOURCE=https://github.com/janveverka/CMSSW_Daq_SingleMachineTest.git
+DESTINATION=$CMSSW_BASE/src/Daq/SingleMachineTest
+git clone $SOURCE $DESTINATION
 
 ## Setup the test
 ## Root of the location for the files written by the BU and FU processes.
