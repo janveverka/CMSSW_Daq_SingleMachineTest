@@ -41,7 +41,7 @@ Follow these instructions to run the F3 single machine test.
 
 4.  Setup the test
 
-    `ROOT_DIR` is a path to a directory that will contain directories and files written by the BU and FU processes.  You can customize it.  You should be able to write under that path and the corresponding disk should be **less than 80% used**.  These 80% are configured by the parameter `highWaterMark` of the `EvFBuildingThrottle` EDM Service in the [test/startBU.py](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/test/startBU.py) configuration file.
+    `ROOT_DIR` is a path to a directory that will contain directories and files written by the BU and FU processes.  You can customize it.  You should be able to write under that path and the corresponding disk should be **less than 80% used**.  These 80% are configured by the parameter `highWaterMark` of the `EvFBuildingThrottle` EDM Service in the [test/startBU_cfg.py](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/test/startBU_cfg.py) configuration file.
 
     `RUN_NUMBER` is the run number used for both the BU and the FU processes.  You can customize this too as long as you use the same for both of them.
 
