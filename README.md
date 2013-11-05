@@ -3,14 +3,15 @@ CMSSW_Daq_SingleMachineTest
 
 This project contains the DAQ2 F3 Single Machine Test configurations.
 
-Follow these instructions to run the F3 single machine test on the daqval.
+Follow these instructions to run the F3 single machine test on the daqval at P5.
 
 1.  Copy the test repo from github to cmsusr via lxplus
     
         ssh lxplus.cern.ch
+        bash
         TEMP_DIR=$(mktemp -d -p /tmp/$(whoami))
-        SOURCE=https://github.com/janveverka/CMSSW_Daq_SingleMachineTest.git
         mkdir $TEMP_DIR/git && cd !$
+        SOURCE=https://github.com/janveverka/CMSSW_Daq_SingleMachineTest.git
         git clone --bare $SOURCE
         cd
         ## Replace `$USER' with your username at P5
