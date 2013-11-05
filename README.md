@@ -3,14 +3,23 @@ CMSSW_Daq_SingleMachineTest
 
 DAQ2 F3 Single Machine Test configurations
 
+1. In Ruby you can map like this:
+
+        ['a', 'b'].map { |x| x.uppercase }
+
+2. In Rails, you can do a shortcut:
+
+        ['a', 'b'].map(&:uppercase)
+
 1.  Get a terminal on a machine with enough HDD
+
         ssh lxplus.cern.ch
         df /tmp
         ## Logout and login to a different node if Use > 80 %.
         bash
 
-
 2.  Setup CMSSW
+
         ## Customizable location of the code for the test
         TEST_DIR=$(mktemp -d -p /tmp/$(whoami))
         cd $TEST_DIR
@@ -20,6 +29,7 @@ DAQ2 F3 Single Machine Test configurations
         cmsenv
 
 3.   Get the configs
+
         SOURCE=https://github.com/janveverka/CMSSW_Daq_SingleMachineTest.git
         DESTINATION=$CMSSW_BASE/src/Daq/SingleMachineTest
         git clone $SOURCE $DESTINATION
