@@ -5,7 +5,7 @@ This project contains the DAQ2 F3 Single Machine Test configurations.
 
 Follow these instructions to run the F3 single machine test.
 
-1.  Get a terminal on a machine with enough HDD
+1.  Get a terminal on a machine running SLC6 and with enough HDD
 
         ssh lxplus.cern.ch
         df /tmp
@@ -15,7 +15,7 @@ Follow these instructions to run the F3 single machine test.
         Filesystem           1K-blocks      Used Available Use% Mounted on
         /dev/vdb             165139820  96397804  60353408  62% /tmp
 
-    Here, 62% of the `/tmp` area is used.  *To run a test, you need a machine with a disk, which is less than 80% used.  If Use > 80% for you, logout from this node and login to a different one.*
+    Here, 62% of the device containing the `\tmp` directory is used.  *To run this test, you need to use a device, which is less than 80% used.  If `Use%` is more than `80%` for you, logout from this node and login to a different one.*  See the item "*Setup the test*" below for more details.
 
     The rest of the instructions assumes that you work in Bash:
 
@@ -23,7 +23,7 @@ Follow these instructions to run the F3 single machine test.
 
 2.  Setup CMSSW
 
-    TEST_DIR is a path to a directory that will contain the configurations.  You can customize this.
+    TEST_DIR is the path to the directory that will contain the CMSSW configuration files.  Below we default to a temporary directory under `/tmp/$USER` where `$USER` stands for your user name.  This should generally work on `lxplus` but is not mandatory.  You should be able to change this to whatever path you like as long as you have permisson to write there.
 
         TEST_DIR=$(mktemp -d -p /tmp/$(whoami))
         cd $TEST_DIR
@@ -41,7 +41,7 @@ Follow these instructions to run the F3 single machine test.
 
 4.  Setup the test
 
-    `ROOT_DIR` is a path to a directory that will contain directories and files written by the BU and FU processes.  You can customize it.  You should be able to write under that path and the corresponding disk should be **less than 80% used**.  These 80% are configured by the parameter `highWaterMark` of the `EvFBuildingThrottle` EDM Service in the [test/startBU_cfg.py](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/test/startBU_cfg.py) configuration file.
+    `ROOT_DIR` is the full path of the directory that will contain futher directories, data files and meta-data files created by the BU and FU processes.  Here, we default to `TEST_DIR` - the directory containing the configurations.  Similarly as for `TEST_DIR`, this should generally work but you should be able to change it.  Again, you should be able to write under that path.  Also, the corresponding disk should be **less than 80% used**.  These 80% are configured by the parameter `highWaterMark` of the `EvFBuildingThrottle` EDM Service in the [test/startBU_cfg.py](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/test/startBU_cfg.py) configuration file.
 
     `RUN_NUMBER` is the run number used for both the BU and the FU processes.  You can customize this too as long as you use the same for both of them.
 
