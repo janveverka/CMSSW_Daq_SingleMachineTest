@@ -23,7 +23,7 @@ Follow these instructions to run the F3 single machine test.
 
 2.  Setup CMSSW
 
-    TEST_DIR is the path to the directory that will contain the CMSSW configuration files.  Below we default to a temporary directory under `/tmp/$USER` where `$USER` stands for your user name.  This should generally work on `lxplus` but is not mandatory.  You should be able to change this to whatever path you like as long as you have permisson to write there.
+    `$TEST_DIR` gives the full path to the directory that will contain the CMSSW configuration files.  Below we default to a temporary directory under `/tmp/$USER` where `$USER` stands for your user name.  This should generally work on `lxplus` but is not mandatory.  You should be able to change this to whatever path you like as long as you have permisson to write there.
 
         TEST_DIR=$(mktemp -d -p /tmp/$(whoami))
         cd $TEST_DIR
@@ -41,9 +41,9 @@ Follow these instructions to run the F3 single machine test.
 
 4.  Setup the test
 
-    `ROOT_DIR` is the full path of the directory that will contain futher directories, data files and meta-data files created by the BU and FU processes.  Here, we default to `TEST_DIR` - the directory containing the configurations.  Similarly as for `TEST_DIR`, this should generally work but you should be able to change it.  Again, you should be able to write under that path.  Also, the corresponding disk should be **less than 80% used**.  These 80% are configured by the parameter `highWaterMark` of the `EvFBuildingThrottle` EDM Service in the [test/startBU_cfg.py](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/test/startBU_cfg.py) configuration file.
+    `$ROOT_DIR` gives the full path of the directory that will contain futher directories, data files and meta-data files created by the BU and FU processes.  Here, we default `$ROOT_DIR` to `$TEST_DIR`, the directory containing the configurations, which in turn defaults to a directory under `/tmp`, see the item *Setup CMSSW* above.  Similarly to `$TEST_DIR`, the default should generally work but you should be able to change it if you want.  Again, you need to be able to write under the `$ROOT_DIR` path.  Also, the corresponding disk should be **less than 80% used**.  These 80% are configured by the parameter `highWaterMark` of the `EvFBuildingThrottle` EDM Service in the [test/startBU_cfg.py](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/test/startBU_cfg.py) configuration file.
 
-    `RUN_NUMBER` is the run number used for both the BU and the FU processes.  You can customize this too as long as you use the same for both of them.
+    `$RUN_NUMBER` gives the run number used for the BU process and the FU process.  The purpose of this variable is to make sure that the same run number is used for both the BU and the FU. You can customize this too.
 
         ROOT_DIR=$TEST_DIR
         RUN_NUMBER=100
@@ -77,7 +77,7 @@ Follow these instructions to run the F3 single machine test.
         Begin processing the 3rd record. Run 100, Event 3, LumiSection 1 at 05-Nov-2013 16:52:22.377 CET
         ...
 
-    View the [full example BU output](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/data/example_bu_output.log). 
+    View the [full output of the example BU process](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/data/example_bu_output.log). 
 
     Kill the process with `Ctrl-C` after a while.
 
@@ -116,7 +116,7 @@ Follow these instructions to run the F3 single machine test.
         Begin processing the 4th record. Run 100, Event 4, LumiSection 1 at 05-Nov-2013 16:59:12.748 CET
         ...
 
-    View the [full example FU output](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/data/example_fu_output.log). 
+    View the [full output of the example FU process](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/data/example_fu_output.log). 
 
     You can kill this with `Ctrl-C` too.
 
