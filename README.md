@@ -5,7 +5,7 @@ This project contains the DAQ2 F3 Single Machine Test configurations.
 
 Follow these instructions to run the F3 single machine test.
 
-1.  Get a terminal on a machine running SLC6 and with enough HDD
+1.  Get a terminal on an lxplus machine running SLC6 and with enough HDD space
 
         ssh lxplus.cern.ch
         df /tmp
