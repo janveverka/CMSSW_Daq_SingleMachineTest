@@ -87,17 +87,15 @@ process.source = cms.Source("FedRawDataInputSource",
     getLSFromFilename = cms.untracked.bool(True),
     testModeNoBuilderUnit = cms.untracked.bool(False),
     eventChunkSize = cms.untracked.uint32(16),
-    runNumber = cms.untracked.uint32(101)
+    runNumber = cms.untracked.uint32(options.runNumber)
     )
 
 
 process.filter1 = cms.EDFilter("HLTPrescaler",
-    prescaleFactor = cms.int32(-1),
     L1GtReadoutRecordTag = cms.InputTag( "hltGtDigis" )
     )
 
 process.filter2 = cms.EDFilter("HLTPrescaler",
-    prescaleFactor = cms.int32(-1),
     L1GtReadoutRecordTag = cms.InputTag( "hltGtDigis" )
     )
 
