@@ -1,0 +1,142 @@
+%MSG-i EvFDaqDirector:  (NoModuleName) 05-Nov-2013 16:59:06 CET pre-events
+creating filedesc for fureadwritelock 9
+%MSG
+<MON> DIR NOT FOUND!
+FastMonitoringService: initializing FastMonitor with microstate def path: /afs/cern.ch/cms/slc6_amd64_gcc481/cms/cmssw/CMSSW_7_0_0_pre7/src/EventFilter/Utilities/plugins/microstatedef.jsd 12 2 34
+Current states: Ms=0 ms=0 us=0
+%MSG-i FedRawDataInputSource:  FedRawDataInputSource:source@sourceConstruction  05-Nov-2013 16:59:06 CET pre-events
+test mode: 0, read-ahead chunk size: 16 on host lxplus0467
+%MSG
+%MSG-i FedRawDataInputSource:  FedRawDataInputSource:source@sourceConstruction  05-Nov-2013 16:59:06 CET pre-events
+Getting data from /tmp/veverka/tmp.U8qiZRS1vX/data/run000100
+%MSG
+Current states: Ms=0 ms=0 us=0
+Current states: Ms=0 ms=0 us=0
+Current states: Ms=0 ms=0 us=0
+Current states: Ms=0 ms=0 us=0
+%MSG-i RecoEventOutputModuleForFU:  Stream:streamA@ctor  05-Nov-2013 16:59:11 CET pre-events
+Writing .dat files to /tmp/veverka/tmp.U8qiZRS1vX/data/run000100
+%MSG
+%MSG-i RecoEventOutputModuleForFU:  Stream:streamB@ctor  05-Nov-2013 16:59:11 CET pre-events
+Writing .dat files to /tmp/veverka/tmp.U8qiZRS1vX/data/run000100
+%MSG
+path legenda*****************
+0=NoPath 
+module legenda***************
+0=Invalid 1=FwkOvh 2=Idle 3=Input 4=InputDone 5=DQM 6= 7= 8= 9= 10= 11= 12= 13= 14= 15= 16= 17= 18= 19= 20= 21= 22= 23= 24= 25= 26= 27= 28= 29= 30= 31= 32= 33=a 34=filter1 35=b 36=filter2 37=streamA 38=streamB 39=TriggerResults 
+RecoEventOutputModuleForFU: start() method 
+RecoEventOutputModuleForFU, initializing streams. init stream: /tmp/veverka/tmp.U8qiZRS1vX/data/run000100/streamA.ini eof stream /tmp/veverka/tmp.U8qiZRS1vX/data/run000100/streamA.eof event stream 000001.dat
+RecoEventOutputModuleForFU: start() method 
+RecoEventOutputModuleForFU, initializing streams. init stream: /tmp/veverka/tmp.U8qiZRS1vX/data/run000100/streamB.ini eof stream /tmp/veverka/tmp.U8qiZRS1vX/data/run000100/streamB.eof event stream 000001.dat
+path legenda*****************
+0=NoPath 
+%MSG-i FedRawDataInputSource:  PostBeginRun 05-Nov-2013 16:59:11 CET  PostBeginRun
+Asking for next file... to the DaqDirector
+%MSG
+%MSG-i EvFDaqDirector:  PostBeginRun 05-Nov-2013 16:59:11 CET PostBeginRun
+created filedesc for fureadwritelock 9
+%MSG
+%MSG-i EvFDaqDirector:  PostBeginRun 05-Nov-2013 16:59:11 CET PostBeginRun
+Reopened the fw FD & STREAM
+%MSG
+Current states: Ms=3 ms=0 us=0
+%MSG-i EvFDaqDirector:  PostBeginRun 05-Nov-2013 16:59:12 CET PostBeginRun
+Written to file: 1:1
+%MSG
+%MSG-i FedRawDataInputSource:  PostBeginRun 05-Nov-2013 16:59:12 CET  PostBeginRun
+The director says to grab: /tmp/veverka/tmp.U8qiZRS1vX/data/run000100/run000100_ls0001_index000000.raw
+%MSG
+%MSG-i FedRawDataInputSource:  PostBeginRun 05-Nov-2013 16:59:12 CET  PostBeginRun
+grabbing next file, setting last seen lumi to LS = 1
+%MSG
+%MSG-i FedRawDataInputSource:  PostBeginRun 05-Nov-2013 16:59:12 CET  PostBeginRun
+ JSON rename "/tmp/veverka/tmp.U8qiZRS1vX/data/run000100/run000100_ls0001_index000000.jsn" to "/tmp/veverka/tmp.U8qiZRS1vX/data/run000100/run000100_ls0001_index000000_pid19109.jsn"
+%MSG
+%MSG-i FedRawDataInputSource:  PostBeginRun 05-Nov-2013 16:59:12 CET  PostBeginRun
+ Running cmd = mv /tmp/veverka/tmp.U8qiZRS1vX/data/run000100/run000100_ls0001_index000000.jsn /tmp/veverka/tmp.U8qiZRS1vX/data/run000100/run000100_ls0001_index000000_pid19109.jsn
+%MSG
+Current states: Ms=3 ms=0 us=0
+%MSG-i FedRawDataInputSource:  PostBeginRun 05-Nov-2013 16:59:12 CET  PostBeginRun
+ tried to open file.. "/tmp/veverka/tmp.U8qiZRS1vX/data/run000100/run000100_ls0001_index000000.raw" fd:149
+%MSG
+FastMonitoringService: Pre-begin LUMI: 1
+RecoEventOutputModuleForFU : begin lumi 
+RecoEventOutputModuleForFU : begin lumi 
+Begin processing the 1st record. Run 100, Event 1, LumiSection 1 at 05-Nov-2013 16:59:12.381 CET
+%MSG-w HLT:  HLTPrescaler:filter1 05-Nov-2013 16:59:12 CET Run: 100 Event: 1
+Cannot read prescale column index from GT data: using default as defined by configuration or DAQ
+%MSG
+%MSG-w HLT:  HLTPrescaler:filter2 05-Nov-2013 16:59:12 CET Run: 100 Event: 1
+Cannot read prescale column index from GT data: using default as defined by configuration or DAQ
+%MSG
+Begin processing the 2nd record. Run 100, Event 2, LumiSection 1 at 05-Nov-2013 16:59:12.505 CET
+Begin processing the 3rd record. Run 100, Event 3, LumiSection 1 at 05-Nov-2013 16:59:12.626 CET
+Begin processing the 4th record. Run 100, Event 4, LumiSection 1 at 05-Nov-2013 16:59:12.748 CET
+Begin processing the 5th record. Run 100, Event 5, LumiSection 1 at 05-Nov-2013 16:59:12.935 CET
+Begin processing the 6th record. Run 100, Event 6, LumiSection 1 at 05-Nov-2013 16:59:13.058 CET
+Begin processing the 7th record. Run 100, Event 7, LumiSection 1 at 05-Nov-2013 16:59:13.183 CET
+Current states: Ms=3 ms=0 us=35
+Begin processing the 8th record. Run 100, Event 8, LumiSection 1 at 05-Nov-2013 16:59:13.305 CET
+Begin processing the 9th record. Run 100, Event 9, LumiSection 1 at 05-Nov-2013 16:59:13.428 CET
+Begin processing the 10th record. Run 100, Event 10, LumiSection 1 at 05-Nov-2013 16:59:13.550 CET
+Begin processing the 11th record. Run 100, Event 11, LumiSection 1 at 05-Nov-2013 16:59:13.671 CET
+Begin processing the 12th record. Run 100, Event 12, LumiSection 1 at 05-Nov-2013 16:59:13.793 CET
+Begin processing the 13th record. Run 100, Event 13, LumiSection 1 at 05-Nov-2013 16:59:13.915 CET
+Begin processing the 14th record. Run 100, Event 14, LumiSection 1 at 05-Nov-2013 16:59:14.039 CET
+Begin processing the 15th record. Run 100, Event 15, LumiSection 1 at 05-Nov-2013 16:59:14.167 CET
+Current states: Ms=3 ms=0 us=35
+Begin processing the 16th record. Run 100, Event 16, LumiSection 1 at 05-Nov-2013 16:59:14.289 CET
+Begin processing the 17th record. Run 100, Event 17, LumiSection 1 at 05-Nov-2013 16:59:14.409 CET
+Begin processing the 18th record. Run 100, Event 18, LumiSection 1 at 05-Nov-2013 16:59:14.531 CET
+Begin processing the 19th record. Run 100, Event 19, LumiSection 1 at 05-Nov-2013 16:59:14.653 CET
+Begin processing the 20th record. Run 100, Event 20, LumiSection 1 at 05-Nov-2013 16:59:14.775 CET
+%MSG-i FedRawDataInputSource:  PostProcessPath 05-Nov-2013 16:59:14 CET  PostProcessEvent
+Asking for next file... to the DaqDirector
+%MSG
+%MSG-i EvFDaqDirector:  PostProcessPath 05-Nov-2013 16:59:14 CET  PostProcessEvent
+created filedesc for fureadwritelock 9
+%MSG
+%MSG-i EvFDaqDirector:  PostProcessPath 05-Nov-2013 16:59:14 CET  PostProcessEvent
+Reopened the fw FD & STREAM
+%MSG
+%MSG-i EvFDaqDirector:  PostProcessPath 05-Nov-2013 16:59:15 CET  PostProcessEvent
+Written to file: 1:2
+%MSG
+%MSG-i FedRawDataInputSource:  PostProcessPath 05-Nov-2013 16:59:15 CET  PostProcessEvent
+The director says to grab: /tmp/veverka/tmp.U8qiZRS1vX/data/run000100/run000100_ls0001_index000001.raw
+%MSG
+%MSG-i FedRawDataInputSource:  PostProcessPath 05-Nov-2013 16:59:15 CET  PostProcessEvent
+grabbing next file, setting last seen lumi to LS = 1
+%MSG
+%MSG-i FedRawDataInputSource:  PostProcessPath 05-Nov-2013 16:59:15 CET  PostProcessEvent
+ JSON rename "/tmp/veverka/tmp.U8qiZRS1vX/data/run000100/run000100_ls0001_index000001.jsn" to "/tmp/veverka/tmp.U8qiZRS1vX/data/run000100/run000100_ls0001_index000001_pid19109.jsn"
+%MSG
+%MSG-i FedRawDataInputSource:  PostProcessPath 05-Nov-2013 16:59:15 CET  PostProcessEvent
+ Running cmd = mv /tmp/veverka/tmp.U8qiZRS1vX/data/run000100/run000100_ls0001_index000001.jsn /tmp/veverka/tmp.U8qiZRS1vX/data/run000100/run000100_ls0001_index000001_pid19109.jsn
+%MSG
+Current states: Ms=3 ms=0 us=1
+%MSG-i FedRawDataInputSource:  PostProcessPath 05-Nov-2013 16:59:15 CET  PostProcessEvent
+ tried to open file.. "/tmp/veverka/tmp.U8qiZRS1vX/data/run000100/run000100_ls0001_index000001.raw" fd:149
+%MSG
+Begin processing the 21st record. Run 100, Event 21, LumiSection 1 at 05-Nov-2013 16:59:15.072 CET
+Begin processing the 22nd record. Run 100, Event 22, LumiSection 1 at 05-Nov-2013 16:59:15.194 CET
+Begin processing the 23rd record. Run 100, Event 23, LumiSection 1 at 05-Nov-2013 16:59:15.315 CET
+Begin processing the 24th record. Run 100, Event 24, LumiSection 1 at 05-Nov-2013 16:59:15.436 CET
+Begin processing the 25th record. Run 100, Event 25, LumiSection 1 at 05-Nov-2013 16:59:15.565 CET
+Begin processing the 26th record. Run 100, Event 26, LumiSection 1 at 05-Nov-2013 16:59:15.687 CET
+Begin processing the 27th record. Run 100, Event 27, LumiSection 1 at 05-Nov-2013 16:59:15.811 CET
+Begin processing the 28th record. Run 100, Event 28, LumiSection 1 at 05-Nov-2013 16:59:15.932 CET
+Current states: Ms=3 ms=0 us=35
+Begin processing the 29th record. Run 100, Event 29, LumiSection 1 at 05-Nov-2013 16:59:16.056 CET
+Begin processing the 30th record. Run 100, Event 30, LumiSection 1 at 05-Nov-2013 16:59:16.177 CET
+Begin processing the 31st record. Run 100, Event 31, LumiSection 1 at 05-Nov-2013 16:59:16.299 CET
+Begin processing the 32nd record. Run 100, Event 32, LumiSection 1 at 05-Nov-2013 16:59:16.420 CET
+Begin processing the 33rd record. Run 100, Event 33, LumiSection 1 at 05-Nov-2013 16:59:16.541 CET
+Begin processing the 34th record. Run 100, Event 34, LumiSection 1 at 05-Nov-2013 16:59:16.662 CET
+Begin processing the 35th record. Run 100, Event 35, LumiSection 1 at 05-Nov-2013 16:59:16.790 CET
+Begin processing the 36th record. Run 100, Event 36, LumiSection 1 at 05-Nov-2013 16:59:16.911 CET
+Begin processing the 37th record. Run 100, Event 37, LumiSection 1 at 05-Nov-2013 16:59:17.032 CET
+Current states: Ms=3 ms=0 us=33
+Begin processing the 38th record. Run 100, Event 38, LumiSection 1 at 05-Nov-2013 16:59:17.154 CET
+Begin processing the 39th record. Run 100, Event 39, LumiSection 1 at 05-Nov-2013 16:59:17.274 CET
+Begin processing the 40th record. Run 100, Event 40, LumiSection 1 at 05-Nov-2013 16:59:17.395 CET
