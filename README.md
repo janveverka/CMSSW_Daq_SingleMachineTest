@@ -15,7 +15,7 @@ Follow these instructions to run the F3 single machine test.
         Filesystem           1K-blocks      Used Available Use% Mounted on
         /dev/vdb             165139820  96397804  60353408  62% /tmp
 
-    Here, 62% of the /tmp area is used.  To run a test, you need a machine with a disk, which is less than 80% used.  If Use > 80% for you, Logout and login to a different node.
+    Here, 62% of the `/tmp` area is used.  *To run a test, you need a machine with a disk, which is less than 80% used.  If Use > 80% for you, logout from this node and login to a different one.*
 
     The rest of the instructions assumes that you work in Bash:
 
@@ -41,9 +41,9 @@ Follow these instructions to run the F3 single machine test.
 
 4.  Setup the test
 
-    ROOT_DIR is a path to a directory that will contain directories and files written by the BU and FU processes.  You can customize it.  You should be able to write under that path and the corresponding disk should be less than 80% used.  These 80% are configured by the parameter highWaterMark of the EvFBuildingThrottle EDM Service in the test/startBU.py file.
+    `ROOT_DIR` is a path to a directory that will contain directories and files written by the BU and FU processes.  You can customize it.  You should be able to write under that path and the corresponding disk should be **less than 80% used**.  These 80% are configured by the parameter `highWaterMark` of the `EvFBuildingThrottle` EDM Service in the [test/startBU.py](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/test/startBU.py) configuration file.
 
-    RUN_NUMBER is the run number used for both the BU and the FU processes.  You can customize this too as long as you use the same for both of them.
+    `RUN_NUMBER` is the run number used for both the BU and the FU processes.  You can customize this too as long as you use the same for both of them.
 
         ROOT_DIR=$TEST_DIR
         RUN_NUMBER=100
@@ -79,7 +79,7 @@ Follow these instructions to run the F3 single machine test.
 
     View the [full example BU output](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/data/example_bu_output.log). 
 
-    Kill the process with Ctrl-C after a while.
+    Kill the process with `Ctrl-C` after a while.
 
 6.  Run the FU process
 
@@ -118,7 +118,7 @@ Follow these instructions to run the F3 single machine test.
 
     View the [full example FU output](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/data/example_fu_output.log). 
 
-    You can kill this with Ctrl-C too.
+    You can kill this with `Ctrl-C` too.
 
 7.  Clean up and exit
 
