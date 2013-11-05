@@ -3,39 +3,66 @@ CMSSW_Daq_SingleMachineTest
 
 This project contains the DAQ2 F3 Single Machine Test configurations.
 
-Follow these instructions to run the F3 single machine test.
+Follow these instructions to run the F3 single machine test on the daqval.
 
-1.  Get a terminal on a machine running SLC6 and with enough HDD
-
+1.  Copy the test repo from github to cmsusr via lxplus
+    
         ssh lxplus.cern.ch
-        df /tmp
+        TEMP_DIR=$(mktemp -d -p /tmp/$(whoami))
+        SOURCE=https://github.com/janveverka/CMSSW_Daq_SingleMachineTest.git
+        mkdir $TEMP_DIR/git && cd !$
+        git clone --bare $SOURCE
+        cd
+        ## Replace `$USER' with your username at P5
+        rsync -a -vv $TEMP_DIR/git $USER@cmsusr:
+        rm -rf $TEMP_DIR
+
+2.  Get a terminal on a dvfu machine with CMSSW 700pre7 and enough HDD space
+
+        ## Replace `$USER' with your username at P5
+        ssh $USER@cmsusr
+        wassh -h 'dvfu-c2f37-3[4,6,8]-0[1-4]' 'df /tmp' 2> /dev/null        
 
     The output should look something like this:
 
-        Filesystem           1K-blocks      Used Available Use% Mounted on
-        /dev/vdb             165139820  96397804  60353408  62% /tmp
+        dvfu-c2f37-34-01:                                                    
+           Filesystem           1K-blocks      Used Available Use% Mounted on
+           /dev/sda2             75594872  26653048  45101824  38% /         
+        dvfu-c2f37-34-02:                                                    
+           Filesystem           1K-blocks      Used Available Use% Mounted on
+           /dev/sda2             75594872  26373616  45381256  37% /         
+        dvfu-c2f37-34-03:
+           Filesystem           1K-blocks      Used Available Use% Mounted on
+           /dev/sda2             75594872  26580640  45174232  38% /
 
-    Here, 62% of the device containing the `\tmp` directory is used.  *To run this test, you need to use a device, which is less than 80% used.  If `Use%` is more than `80%` for you, logout from this node and login to a different one.*  See the item "*Setup the test*" below for more details.
+    Here, 38%, 37%, and 38% of the device containing the `\tmp` directory on is used on the machine dvfu-c2f37-34-01, dvfu-c2f37-34-02 and dvfu-c2f37-34-03, respectively.  *To run this test, you need to use a device, which is less than 80% used.  See the item "*Setup the test*" below for more details.
+
+    Choose a machine with enough free space:
+
+        ssh dvfu-c2f37-34-01
 
     The rest of the instructions assumes that you work in Bash:
 
         bash
 
-2.  Setup CMSSW
+3.  Setup CMSSW
 
     `$TEST_DIR` gives the full path to the directory that will contain the CMSSW configuration files.  Below we default to a temporary directory under `/tmp/$USER` where `$USER` stands for your user name.  This should generally work on `lxplus` but is not mandatory.  You should be able to change this to whatever path you like as long as you have permisson to write there.
 
-        TEST_DIR=$(mktemp -d -p /tmp/$(whoami))
+        MY_TEMP_DIR=/tmp/$(whoami)
+        if [[ ! -d mkdir $MY_TEMP_DIR ]]; then
+            mkdir $MY_TEMP_DIR
+        fi
+        TEST_DIR=$(mktemp -d -p $MY_TEMP_DIR)
         cd $TEST_DIR
         export SCRAM_ARCH=slc6_amd64_gcc481
         cmsrel CMSSW_7_0_0_pre7
         cd CMSSW_7_0_0_pre7/src
         cmsenv
 
+4.  Get the configs
 
-3.  Get the configs
-
-        SOURCE=https://github.com/janveverka/CMSSW_Daq_SingleMachineTest.git
+        SOURCE=$HOME/git/CMSSW_Daq_SingleMachineTest.git
         DESTINATION=$CMSSW_BASE/src/Daq/SingleMachineTest
         git clone $SOURCE $DESTINATION
 
