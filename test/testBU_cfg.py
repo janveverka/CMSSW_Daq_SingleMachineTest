@@ -5,6 +5,8 @@ import FWCore.ParameterSet.VarParsing as VarParsing
 
 from os.path import join
 
+release_base = os.environ['CMSSW_RELEASE_BASE']
+
 options = VarParsing.VarParsing ('analysis')
 
 options.register('runNumber',
@@ -17,7 +19,7 @@ options.register('rootDir',
                  '/', # default value
                  VarParsing.VarParsing.multiplicity.singleton,
                  VarParsing.VarParsing.varType.string,          # string, int, or float
-                 "BU base directory")
+                 "Root of other F3 directories, which are relative to this")
 
 options.parseArguments()
 
@@ -40,7 +42,7 @@ process.MessageLogger = cms.Service("MessageLogger",
     )
 
 process.source = cms.Source("EmptySource",
-     firstRun = cms.untracked.uint32(101),
+     firstRun = cms.untracked.uint32(options.runNumber),
      numberEventsInLuminosityBlock = cms.untracked.uint32(2000),
      numberEventsInRun = cms.untracked.uint32(0)    
     )
@@ -50,7 +52,7 @@ process.EvFDaqDirector = cms.Service("EvFDaqDirector",
     buBaseDir = cms.untracked.string(join(options.rootDir, "data")),
     smBaseDir  = cms.untracked.string(join(options.rootDir, "sm")),
     directorIsBu = cms.untracked.bool(True),
-    runNumber = cms.untracked.uint32(101)
+    runNumber = cms.untracked.uint32(options.runNumber)
     )
 
 process.EvFBuildingThrottle = cms.Service("EvFBuildingThrottle",
@@ -73,8 +75,7 @@ process.out = cms.OutputModule("RawStreamFileWriterForBU",
     eventBufferSize = cms.untracked.uint32(100),
     numEventsPerFile= cms.untracked.uint32(20),
     jsonDefLocation = cms.untracked.string(
-        os.path.join(os.environ['CMSSW_RELEASE_BASE'],
-                     'src/EventFilter/Utilities/plugins/budef.jsd')
+        join(release_base, 'src/EventFilter/Utilities/plugins/budef.jsd')
         ),
     debug = cms.untracked.bool(True)
     )
