@@ -67,7 +67,7 @@ Follow these instructions to run the F3 single machine test on the daqval at P5.
         DESTINATION=$CMSSW_BASE/src/Daq/SingleMachineTest
         git clone $SOURCE $DESTINATION
 
-4.  Setup the test
+5.  Setup the test
 
     `$ROOT_DIR` gives the full path of the directory that will contain futher directories, data files and meta-data files created by the BU and FU processes.  Here, we default `$ROOT_DIR` to `$TEST_DIR`, the directory containing the configurations, which in turn defaults to a directory under `/tmp`, see the item *Setup CMSSW* above.  Similarly to `$TEST_DIR`, the default should generally work but you should be able to change it if you want.  Again, you need to be able to write under the `$ROOT_DIR` path.  Also, the corresponding disk should be **less than 80% used**.  These 80% are configured by the parameter `highWaterMark` of the `EvFBuildingThrottle` EDM Service in the [test/startBU_cfg.py](https://github.com/janveverka/CMSSW_Daq_SingleMachineTest/blob/master/test/startBU_cfg.py) configuration file.
 
@@ -76,12 +76,10 @@ Follow these instructions to run the F3 single machine test on the daqval at P5.
         ROOT_DIR=$TEST_DIR
         RUN_NUMBER=100
 
-        ## Create $ROOT_DIR if needed
-        if [[ ! -d $ROOT_DIR ]]; then
-            mkdir -p $ROOT_DIR
-        fi
+        ## Create $ROOT_DIR/BU and $ROOT_DIR/FU if needed
+        mkdir -p $ROOT_DIR/{BU,FU}
 
-5.  Run the BU process
+6.  Run the BU process
 
         cd $DESTINATION/test
         cmsRun startBU_cfg.py runNumber=$RUN_NUMBER rootDir=$ROOT_DIR
@@ -109,7 +107,7 @@ Follow these instructions to run the F3 single machine test on the daqval at P5.
 
     Kill the process with `Ctrl-C` after a while.
 
-6.  Run the FU process
+7.  Run the FU process
 
         cd $DESTINATION/test
         cmsRun startFU_cfg.py runNumber=$RUN_NUMBER rootDir=$ROOT_DIR
@@ -148,7 +146,7 @@ Follow these instructions to run the F3 single machine test on the daqval at P5.
 
     You can kill this with `Ctrl-C` too.
 
-7.  Clean up and exit
+8.  Clean up and exit
 
         cd
         rm -rf $ROOT_DIR
