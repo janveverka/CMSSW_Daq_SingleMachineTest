@@ -82,7 +82,8 @@ Follow these instructions to run the F3 single machine test on the daqval at P5.
         RUN_NUMBER=100
 
         ## Create output directories if needed
-        mkdir -p $ROOT_DIR/{BU,FU}
+        mkdir -p $ROOT_DIR/BU
+        mkdir -p $ROOT_DIR/FU/data/$(printf "%06d" $RUN_NUMBER)
 
 6.  Run the BU process
 
