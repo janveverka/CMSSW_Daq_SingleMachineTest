@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import FWCore.ParameterSet.Config as cms
 import FWCore.ParameterSet.VarParsing as VarParsing
@@ -13,6 +14,12 @@ options.register('runNumber',
                  VarParsing.VarParsing.multiplicity.singleton,
                  VarParsing.VarParsing.varType.int,          # string, int, or float
                  "Run Number")
+
+options.register('lumiNumber',
+                 1, # default value
+                 VarParsing.VarParsing.multiplicity.singleton,
+                 VarParsing.VarParsing.varType.int,          # string, int, or float
+                 "Luminosity Section Number")
 
 options.register('rootDir',
                  '/', # default value
@@ -42,13 +49,14 @@ process.MessageLogger = cms.Service("MessageLogger",
 
 process.source = cms.Source("EmptySource",
      firstRun = cms.untracked.uint32(options.runNumber),
+     firstLuminosityBlock = cms.untracked.uint32(options.lumiNumber),
      numberEventsInLuminosityBlock = cms.untracked.uint32(2000),
-     numberEventsInRun = cms.untracked.uint32(0)    
+     numberEventsInRun = cms.untracked.uint32(0)
     )
 
 process.EvFDaqDirector = cms.Service("EvFDaqDirector",
-    baseDir = cms.untracked.string(join(options.rootDir, "data")),
-    buBaseDir = cms.untracked.string(join(options.rootDir, "data")),
+    baseDir = cms.untracked.string(join(options.rootDir, "BU/data")),
+    buBaseDir = cms.untracked.string(join(options.rootDir, "BU/data")),
     smBaseDir  = cms.untracked.string(join(options.rootDir, "sm")),
     directorIsBu = cms.untracked.bool(True),
     runNumber = cms.untracked.uint32(options.runNumber)

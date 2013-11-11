@@ -9,11 +9,15 @@ Follow these instructions to run the F3 single machine test on the daqval at P5.
     
         ssh lxplus.cern.ch
         bash
+
         TEMP_DIR=$(mktemp -d -p /tmp/$(whoami))
-        mkdir $TEMP_DIR/git && cd !$
+        mkdir $TEMP_DIR/git
+        cd $TEMP_DIR/git
+
         SOURCE=https://github.com/janveverka/CMSSW_Daq_SingleMachineTest.git
         git clone --bare $SOURCE
-        cd
+
+        cd ~
         ## Replace `$USER' with your username at P5
         rsync -a -vv $TEMP_DIR/git $USER@cmsusr:
         rm -rf $TEMP_DIR
@@ -22,7 +26,7 @@ Follow these instructions to run the F3 single machine test on the daqval at P5.
 
         ## Replace `$USER' with your username at P5
         ssh $USER@cmsusr
-        wassh -h 'dvfu-c2f37-3[4,6,8]-0[1-4]' 'df /tmp' 2> /dev/null        
+        wassh -h 'dvfu-c2f37-3[4,6,8]-0[1-4]' 'df /tmp' 2> /dev/null
 
     The output should look something like this:
 
@@ -36,9 +40,9 @@ Follow these instructions to run the F3 single machine test on the daqval at P5.
            Filesystem           1K-blocks      Used Available Use% Mounted on
            /dev/sda2             75594872  26580640  45174232  38% /
 
-    Here, 38%, 37%, and 38% of the device containing the `\tmp` directory on is used on the machine dvfu-c2f37-34-01, dvfu-c2f37-34-02 and dvfu-c2f37-34-03, respectively.  *To run this test, you need to use a device, which is less than 80% used.  See the item "*Setup the test*" below for more details.
+    Here, 38%, 37%, and 38% of the device containing the `\tmp` directory on the machine dvfu-c2f37-34-01, dvfu-c2f37-34-02 and dvfu-c2f37-34-03 is used, respectively.  *To run this test, you need to use a device, which is less than 80% used.  See the item "Setup the test"* below for more details.
 
-    Choose a machine with enough free space:
+    Choose a machine with enough free space, for example:
 
         ssh dvfu-c2f37-34-01
 
@@ -57,6 +61,7 @@ Follow these instructions to run the F3 single machine test on the daqval at P5.
         TEST_DIR=$(mktemp -d -p $MY_TEMP_DIR)
         cd $TEST_DIR
         export SCRAM_ARCH=slc6_amd64_gcc481
+        source /opt/cmssw/offline/cmsset_default.sh
         cmsrel CMSSW_7_0_0_pre7
         cd CMSSW_7_0_0_pre7/src
         cmsenv
@@ -76,7 +81,7 @@ Follow these instructions to run the F3 single machine test on the daqval at P5.
         ROOT_DIR=$TEST_DIR
         RUN_NUMBER=100
 
-        ## Create $ROOT_DIR/BU and $ROOT_DIR/FU if needed
+        ## Create output directories if needed
         mkdir -p $ROOT_DIR/{BU,FU}
 
 6.  Run the BU process
@@ -152,6 +157,6 @@ Follow these instructions to run the F3 single machine test on the daqval at P5.
         rm -rf $ROOT_DIR
         rm -rf $TEST_DIR
         exit # Exits the Bash shell started above
-        exit # Logs out from lxplus
+        exit # Logs out from the machine
 
 

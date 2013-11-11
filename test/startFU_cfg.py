@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 ## Inspired by dvfu-c2f37-32-02:/opt/hltd/python/testFU_cfg1.py
 import os
 import FWCore.ParameterSet.Config as cms
@@ -54,38 +55,27 @@ process.FastMonitoringService = cms.Service("FastMonitoringService",
     )
 
 process.EvFDaqDirector = cms.Service("EvFDaqDirector",
-    baseDir = cms.untracked.string(join(options.rootDir, "data")),
-    buBaseDir = cms.untracked.string(join(options.rootDir, "data")),
+    baseDir = cms.untracked.string(join(options.rootDir, "FU/data")),
+    buBaseDir = cms.untracked.string(join(options.rootDir, "BU/data")),
     smBaseDir  = cms.untracked.string(join(options.rootDir, "sm")),
     directorIsBu = cms.untracked.bool(False),
     runNumber = cms.untracked.uint32(options.runNumber)
     )
 
-# process.EvFDaqDirector = cms.Service("EvFDaqDirector",
-#     buBaseDir = cms.untracked.string(options.buBaseDir),
-#     baseDir = cms.untracked.string("/tmp/veverka/single_machine_test/FU/hdd"),
-#     smBaseDir  = cms.untracked.string("hdd"),
-#     directorIsBU = cms.untracked.bool(False ),
-#     testModeNoBuilderUnit = cms.untracked.bool(False)
-#     )
-
 process.PrescaleService = cms.Service("PrescaleService",
     lvl1DefaultLabel = cms.string( "B" ),
     lvl1Labels = cms.vstring('A', 'B'),
     prescaleTable = cms.VPSet(
-        cms.PSet(pathName = cms.string( "p1" ),                                                                                                                
+        cms.PSet(pathName = cms.string( "p1" ),
                  prescales = cms.vuint32( 0, 10)),
-        cms.PSet(pathName = cms.string( "p2" ),                                                                                                           
+        cms.PSet(pathName = cms.string( "p2" ),
                  prescales = cms.vuint32( 0, 100)),
         )
     )
 
 
 process.source = cms.Source("FedRawDataInputSource",
-    rootFUDirectory = cms.untracked.string(join(options.rootDir, "FU/hdd")),
-    rootBUDirectory = cms.untracked.string(join(options.rootDir, "BU/ram")),
     getLSFromFilename = cms.untracked.bool(True),
-    testModeNoBuilderUnit = cms.untracked.bool(False),
     eventChunkSize = cms.untracked.uint32(16),
     runNumber = cms.untracked.uint32(options.runNumber)
     )
